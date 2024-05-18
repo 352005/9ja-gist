@@ -9,7 +9,6 @@ import X from '../public/x-twitter.svg';
 import './form.css'
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Main } from "next/document";
 
 const Home = ()=>{
   const router = useRouter()
@@ -20,7 +19,7 @@ const Home = ()=>{
   }
 
   return (
-    <Main>
+    <div>
       <Logo sign={{
         header: 'Sign Up',
         text: `Let's build a house for you in 9ja`,
@@ -68,7 +67,7 @@ const Home = ()=>{
       </div>
 
       <p className="text-center font-handlee my-8">Already have a home here? <Link href='/login' className="text-green-400 underline text-lg">Login</Link></p>
-    </Main>
+    </div>
   )
 }
 

@@ -1,6 +1,8 @@
 const Discuss = ()=>{
   return (
-    <h1>Discuss Page</h1>
+    <>
+      <h1>Hello World</h1>
+    </>
   )
 }
 

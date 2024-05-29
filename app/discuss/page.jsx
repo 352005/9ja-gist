@@ -53,7 +53,7 @@ const Discuss = ()=>{
             </div>
           </div>
 
-          <div className="postSubject block relative my-12 grid grid-row-auto gap-y-4 top-60">
+          <div className="postSubject relative my-12 grid grid-row-auto gap-y-4 top-60">
             <div className="grid grid-cols-2 ">
               <span className="indicator bg-blue-600"></span>
               <p className="-ml-16 -mt-1">GENERAL</p>
@@ -81,7 +81,7 @@ const Discuss = ()=>{
           </div>
 
           {/*button to open and close the side menu */}
-          <div className="arrowDiv w-6 h-6  border absolute relative shadow-xl bg-white  left-4" onClick={openSideNav}>
+          <div className="arrowDiv w-6 h-6  border relative shadow-xl bg-white  left-4" onClick={openSideNav}>
              <Image src={Arrow} alt="Arrow left" className="arrow" />
           </div>
 

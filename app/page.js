@@ -9,13 +9,102 @@ import X from '../public/x-twitter.svg';
 import './form.css'
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Home = ()=>{
-  const router = useRouter()
+  const router = useRouter();
+  const [nameValid, setNameValid] = useState('');
+  const [passwordValid, setPasswordValid] = useState('');
+  const [emailValid, setEmailValid] = useState('');
+
+  //check if username is valid i.e up to 3 characters
+  const validName = (value)=>{
+    let nameIsValid;
+    if(value.length < 3){
+      nameIsValid = 'Usernames should be up to three characters';
+      return {isValid: false, message: nameIsValid};
+    }
+
+    else if(value.length == ''){
+      nameIsValid = '';
+      return {isValid: false, message: nameIsValid};
+    }
+
+    else{
+      nameIsValid = 'Name added successfully';
+      return {isValid: true, message: nameIsValid};
+    }
+  }
+
+  //check if inputted email is valid i.e contains '@.com'
+  const validEmail = (value)=>{
+    let emailIsValid;
+    let realEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let isReal = realEmail.test(value);
+  
+    if(isReal){
+      emailIsValid = 'Valid Email Address';
+      return {isValid: true, message: emailIsValid};
+    }
+
+    else if(value.length == ''){
+      emailIsValid = '';
+      return {isValid: false, message: emailIsValid};
+    }
+
+    else{
+      emailIsValid = 'Invalid Email Address';
+      return {isValid: false, message: emailIsValid};
+    }
+  }
+
+  //check if inputted password is strong
+  const validPassword = (value)=>{
+    let passwordIsValid;
+    let strongPassword = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).*$/;
+    let isStrong = strongPassword.test(value);
+  
+    if((value.length >= 8) && isStrong){
+      passwordIsValid = 'Strong Password';
+      return {isValid: true, message: passwordIsValid};
+    }
+
+    else if(value.length == ''){
+      passwordIsValid = '';
+      return {isValid: false, message: passwordIsValid};
+    }
+
+    else{
+      passwordIsValid = 'Weak Password';
+      return {isValid: false, message: passwordIsValid};
+    }
+  }
+
+  const handleValidName = (e)=>{
+    setNameValid(validName(e.target.value).message);
+  }
+
+  const handleValidPassword = (e)=>{
+    setPasswordValid(validPassword(e.target.value).message);
+  }
+
+  const handleValidEmail = (e)=>{
+    setEmailValid(validEmail(e.target.value).message);
+  }
 
   const submitForm = (e)=>{
     e.preventDefault();
-    router.push('/discuss');
+    const nameValidated = 'Name added successfully';
+    const passwordValidated = 'Strong Password';
+    const emailValidated = 'Valid Email Address';
+
+    if ((nameValidated === nameValid) && (emailValidated === emailValid) && (passwordValidated === passwordValid)) {
+      alert('Sign Up successful');
+      router.push('/discuss');
+    } 
+    else {
+      alert('Sign Up unsuccessful, please re-fill the form');
+    }
   }
 
   return (
@@ -29,23 +118,26 @@ const Home = ()=>{
         <fieldset>
           <div className="container">
             <div className="entryarea">
-              <input type="text" name="username" id="username" className="customInput"  required/>
+              <input type="text" name="username" id="username" className="customInput" required onInput={handleValidName} />
               <label htmlFor="username" className="font-handlee"> Username</label>
             </div>
+            <p className="mt-4 -mb-4 ml-4">{nameValid}</p>
           </div>
 
           <div className="container">
             <div className="entryarea">
-              <input type="email" name="email" id="email" className="customInput" required />
+              <input type="email" name="email" id="email" className="customInput" required onInput={handleValidEmail} />
               <label htmlFor="email" className="font-handlee"> Email Address</label>
             </div>
+            <p className="mt-4 -mb-4 ml-4">{emailValid}</p>
           </div>
 
           <div className="container">
             <div className="entryarea">
-              <input type="password" name="password" id="password" className="customInput" required />
-              <label htmlFor="username" className="font-handlee"> Password</label>
+              <input type="password" name="password" id="password" className="customInput" required onInput={handleValidPassword} />
+              <label htmlFor="password" className="font-handlee"> Password</label>
             </div>
+            <p className="mt-4 -mb-4 ml-4">{passwordValid}</p>
           </div>
          
           <div className="mt-auto mx-2">

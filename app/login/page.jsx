@@ -5,6 +5,7 @@ import Logo from "../component/logo";
 import '../form.css';
 import Link from "next/link";
 import { useState } from "react";
+import clsx from 'clsx';
 
 
 const Login = ()=>{
@@ -92,7 +93,11 @@ const Login = ()=>{
               <input type="email" name="email" id="email" className="customInput" required onInput={handleValidEmail} />
               <label htmlFor="email" className="font-handlee"> Email Address</label>
             </div>
-            <p className="mt-4 -mb-4 ml-4">{emailValid}</p>
+            <p className={clsx('mt-4 -mb-4 ml-4 font-ptsans',
+              {'text-red-600': emailValid === 'Invalid Email Address',
+                'text-green-600': emailValid === 'Valid Email Address',
+              }
+            )}>{emailValid}</p>
           </div>
 
           <div className="container">
@@ -100,7 +105,11 @@ const Login = ()=>{
               <input type="password" name="password" id="password" className="customInput" required onInput={handleValidPassword} />
               <label htmlFor="username" className="font-handlee"> Password</label>
             </div>
-            <p className="mt-4 -mb-4 ml-4">{passwordValid}</p>
+            <p className={clsx('mt-4 -mb-4 ml-4 font-ptsans',
+              {'text-red-600': passwordValid === 'Weak password',
+              'text-green-600': passwordValid === 'Strong Password',
+            }
+            )}>{passwordValid}</p>
           </div>
 
          <div className="flex justify-between">
@@ -113,7 +122,7 @@ const Login = ()=>{
          </div>
           
           <div className="flex justify-center">
-            <button type="submit" className="mt-4 bg-green-400 text-white py-[.2em] px-14 rounded-full focus:outline-none hover:bg-green-500 font-handlee">Sign Up</button>
+            <button type="submit" className="mt-4 bg-green-400 text-white py-[.2em] px-14 rounded-full focus:outline-none hover:bg-green-500 font-handlee">Sign In</button>
           </div>
         </fieldset>
       </form>

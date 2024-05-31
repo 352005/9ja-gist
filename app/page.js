@@ -10,6 +10,7 @@ import './form.css'
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import clsx from 'clsx';
 
 const Home = ()=>{
   const router = useRouter();
@@ -20,18 +21,18 @@ const Home = ()=>{
   //check if username is valid i.e up to 3 characters
   const validName = (value)=>{
     let nameIsValid;
-    if(value.length < 3){
+    if(value.length < 3 && (value.length != 0)){
       nameIsValid = 'Usernames should be up to three characters';
       return {isValid: false, message: nameIsValid};
     }
 
-    else if(value.length == ''){
+    else if(value.length <= 0){
       nameIsValid = '';
       return {isValid: false, message: nameIsValid};
     }
 
     else{
-      nameIsValid = 'Name added successfully';
+      nameIsValid = 'Cool, valid name';
       return {isValid: true, message: nameIsValid};
     }
   }
@@ -94,7 +95,7 @@ const Home = ()=>{
 
   const submitForm = (e)=>{
     e.preventDefault();
-    const nameValidated = 'Name added successfully';
+    const nameValidated = 'Cool, valid name';
     const passwordValidated = 'Strong Password';
     const emailValidated = 'Valid Email Address';
 
@@ -121,7 +122,11 @@ const Home = ()=>{
               <input type="text" name="username" id="username" className="customInput" required onInput={handleValidName} />
               <label htmlFor="username" className="font-handlee"> Username</label>
             </div>
-            <p className="mt-4 -mb-4 ml-4">{nameValid}</p>
+            <p className={clsx('mt-4 -mb-4 ml-4 font-ptsans',
+              {'text-red-600': nameValid === 'Usernames should be up to three characters',
+                'text-green-600': nameValid === 'Cool, valid name',
+              }
+            )}>{nameValid}</p>
           </div>
 
           <div className="container">
@@ -129,7 +134,11 @@ const Home = ()=>{
               <input type="email" name="email" id="email" className="customInput" required onInput={handleValidEmail} />
               <label htmlFor="email" className="font-handlee"> Email Address</label>
             </div>
-            <p className="mt-4 -mb-4 ml-4">{emailValid}</p>
+            <p className={clsx('mt-4 -mb-4 ml-4 font-ptsans',
+              {'text-red-600': emailValid === 'Invalid Email Address',
+                'text-green-600': emailValid === 'Valid Email Address',
+              }
+            )}>{emailValid}</p>
           </div>
 
           <div className="container">
@@ -137,7 +146,11 @@ const Home = ()=>{
               <input type="password" name="password" id="password" className="customInput" required onInput={handleValidPassword} />
               <label htmlFor="password" className="font-handlee"> Password</label>
             </div>
-            <p className="mt-4 -mb-4 ml-4">{passwordValid}</p>
+            <p className={clsx('mt-4 -mb-4 ml-4 font-ptsans',
+              {'text-red-600': passwordValid === 'Weak password',
+              'text-green-600': passwordValid === 'Strong Password',
+            }
+            )}>{passwordValid}</p>
           </div>
          
           <div className="mt-auto mx-2">

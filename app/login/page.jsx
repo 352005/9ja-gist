@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import Logo from "../component/logo";
+import Logo from "../ui/logo";
 import '../form.css';
 import Link from "next/link";
 import { useState } from "react";

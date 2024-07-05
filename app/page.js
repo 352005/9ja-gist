@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import Logo from "./component/logo";
+import Logo from "./ui/logo";
 import Facebook from '../public/facebook.svg';
 import Email from '../public/email.png';
 import Whatsapp from '../public/whatsapp.svg';

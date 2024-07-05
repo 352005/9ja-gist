@@ -1,6 +1,6 @@
 'use client';
 
-import Hamburger from '../component/hamburger';
+import Hamburger from '../ui/hamburger';
 import NavLogo from '/public/9jaLogo-small.png';
 import Search from '/public/searchIcon.svg';
 import Cancel from '/public/cancelIcon.svg';

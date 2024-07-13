@@ -34,7 +34,7 @@ const DiscussLayout = ({children,})=>{
 
         <Hamburger />
       </nav>
-      {children}
+      <div className='flex-grow'>{children}</div>
     </section>
   )
 }

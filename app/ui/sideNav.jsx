@@ -49,34 +49,34 @@ export const SideNav = ()=>{
           </div>
 
           <div className="postSubject relative my-12 grid grid-row-auto gap-y-4 top-60">
-            <div className="grid grid-cols-2 ">
+            <div className="grid grid-cols-2 gap-0">
               <span className="indicator bg-blue-600"></span>
-              <p className="-ml-16 -mt-1">GENERAL</p>
+              <p className="-ml-16 -mt-1 md:-ml-44 lg:-ml-72">GENERAL</p>
             </div>
 
             <div className="grid grid-cols-2 ">
               <span className="indicator bg-green-600"></span>
-              <p className="-ml-16 -mt-1">NEWS</p>
+              <p className="-ml-16 -mt-1 md:-ml-44 lg:-ml-72">NEWS</p>
             </div>
 
             <div className="grid grid-cols-2 ">
               <span className="indicator bg-red-600"></span>
-             <p className="-ml-16 -mt-1">POLITICS</p>
+             <p className="-ml-16 -mt-1 md:-ml-44 lg:-ml-72">POLITICS</p>
             </div>
 
             <div className="grid grid-cols-2 ">
               <span className="indicator bg-purple-800"></span> 
-              <p className="-ml-16 -mt-1">TECHNOLOGY</p>
+              <p className="-ml-16 -mt-1 md:-ml-44 lg:-ml-72">TECHNOLOGY</p>
             </div>
 
             <div className="grid grid-cols-2 ">
               <span className="indicator bg-yellow-500"></span>
-              <p className="-ml-16 -mt-1">ENTERTAINMENT</p>
+              <p className="-ml-16 -mt-1 md:-ml-44 lg:-ml-72">ENTERTAINMENT</p>
             </div>
           </div>
 
           {/*button to open and close the side menu */}
-          <div className="arrowDiv w-6 h-6  border relative shadow-xl bg-white  left-4" onClick={openSideNav}>
+          <div className="arrowDiv w-6 h-6  border relative shadow-xl bg-white  left-4 md:left-6" onClick={openSideNav}>
              <Image src={Arrow} alt="Arrow left" className="arrow" />
           </div>
       </div>

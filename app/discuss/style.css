@@ -27,7 +27,7 @@
 }
 
 .sideMenu.open{
-  width: 80%;
+  width: 60%;
   overflow-x: visible;
 }
 
@@ -43,4 +43,9 @@
   width: .8em;
   height: .8em;
   border-radius: 50%;
+}
+
+#userMenu.open{
+  transform: scale(1);
+  transition: all ease;
 }

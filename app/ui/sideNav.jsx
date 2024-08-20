@@ -24,7 +24,7 @@ export const SideNav = ()=>{
 
   return(
     <>
-        <div className="sideMenu relative h-screen w-[10%] p-8 text-sm font-ptsans shadow-2xl overflow-hidden" >
+        <div className="bg-white fixed sideMenu h-screen w-[10%] p-8 text-sm font-ptsans shadow-2xl overflow-hidden z-50" >
           
           {isOpen ? <button 
           className="addPost absolute bg-green-700 w-[75%] h-auto p-1 text-white text-base rounded-md"

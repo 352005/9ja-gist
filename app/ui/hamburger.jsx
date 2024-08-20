@@ -4,6 +4,7 @@ const Hamburger = ({className})=>{
   
   const openMenu = ()=>{
     document.querySelector('.burger-menu').classList.toggle('open');
+    document.querySelector('#userMenu').classList.toggle('open');
   }
 
   return (
